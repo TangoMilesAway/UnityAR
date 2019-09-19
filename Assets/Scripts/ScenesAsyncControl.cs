@@ -10,6 +10,7 @@ public class ScenesAsyncControl : MonoBehaviour,IPointerClickHandler
     [Tooltip("下个场景的名字")]
     public string nextSceneName;
     public void OnPointerClick(PointerEventData eventData) {
+        
         SceneManager.LoadScene(nextSceneName);
     }
 
