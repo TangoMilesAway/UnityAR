@@ -11,37 +11,58 @@ public class CarbornControler : MonoBehaviour
     public GameObject bornpoint;
     public GameObject endpoint;
     public int carnum;
+    public bool isstart;
     Vector3 length;
     // Start is called before the first frame update
     void Start()
     {
         timer = Random.Range(0,2f);
-
+        isstart = false;
         carnum = 0;
         isborn = false;
         length = this.GetComponent<Renderer>().bounds.size;
-
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isborn&&carnum<=3)
+        isstart = GameObject.Find("GameControl").GetComponent<Gamecontroler>().startcontrol;
+        if (isstart)
         {
-            GameObject newcar = Instantiate(car);
-            newcar.transform.parent = this.transform;
-            newcar.transform.position = bornpoint.transform.position;
-            newcar.GetComponent<Carmovecontroler>().endpoint = endpoint;
-            isborn = false;
-            carnum++;
-            timer = Random.Range(0,2f);
-        }
-
-        if (!isborn) {
-            timer += Time.deltaTime;
-            if (timer >= cooldown)
+            if (isborn && carnum <= 4)
             {
-                isborn = true;
+                GameObject newcar = Instantiate(car);
+                newcar.transform.parent = this.transform;
+                newcar.transform.position = bornpoint.transform.position;
+                newcar.GetComponent<Carmovecontroler>().endpoint = endpoint;
+                newcar.GetComponent<Carmovecontroler>().Carspeed = GameObject.Find("GameControl").GetComponent<Gamecontroler>().carspeed;
+                isborn = false;
+                carnum++;
+                if (carnum > 2)
+                {
+                    timer = Random.Range(0f, 1f);
+                }
+                if (carnum <= 2&& carnum>=1)
+                {
+                    timer = Random.Range(1f, 2f);
+                }
+            }
+
+            if (carnum < 1)
+            {
+                timer=Random.Range(2.8f, 3f);
+            }
+
+
+
+            if (!isborn)
+            {
+                timer += Time.deltaTime;
+                if (timer >= cooldown)
+                {
+                    isborn = true;
+                }
             }
         }
     }

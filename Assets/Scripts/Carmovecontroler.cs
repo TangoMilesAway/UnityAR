@@ -12,21 +12,27 @@ public class Carmovecontroler : MonoBehaviour
     public bool isstop;
     public float timer;
     public float stoptime;
-
+    private Transform[] children;
+    private float safedistance;
     void Start()
     {
-        Carspeed = 0.01f;
         Nowcarspeed = Carspeed;
         timer = 0;
         stoptime = 0.5f;
-
+        children = this.GetComponentsInChildren<Transform>();
+        foreach (var child in children) {
+            if (child.name == "pCube5") {
+                safedistance=child.GetComponent<Renderer>().bounds.size.z;
+            }
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        Ray ray = new Ray(transform.position, transform.forward * 10);
-        Debug.DrawLine(transform.position, transform.position + transform.forward * 10, Color.red);
+        Ray ray = new Ray(transform.position + new Vector3(0, 7f, 0), endpoint.transform.position + new Vector3(0, 7f, 0));
+        Debug.DrawLine(this.transform.position+new Vector3(0,7f,0), endpoint.transform.position + new Vector3(0, 7f, 0), Color.red);
+
 
         if (!isstop)
         {
@@ -34,19 +40,28 @@ public class Carmovecontroler : MonoBehaviour
                 isstop = true;
             }
 
-            if (Physics.Raycast(ray, out hit, 10))
+            if (Physics.Raycast(ray, out hit, 1000))
             {
-                if (Vector3.Distance(hit.transform.position, this.transform.position) < 1f)
+                Debug.Log(hit.transform.tag);
+                if (hit.transform.tag == "Car")
                 {
-                    Nowcarspeed = 0f;
+                    Debug.Log(Vector3.Distance(hit.transform.position, this.transform.position));
+                    Debug.Log(safedistance * 1.5f);
+                    if (Vector3.Distance(hit.transform.position, this.transform.position) <= safedistance*1.5f)
+                    {
+                        Nowcarspeed = 0f;
+                    }
+                    else
+                    {
+                        Nowcarspeed = Carspeed;
+                    }
                 }
-                else
-                {
+                else {
                     Nowcarspeed = Carspeed;
                 }
             }
 
-            if (!Physics.Raycast(ray, out hit, 10))
+            if (!Physics.Raycast(ray, out hit, 1000))
             {
                 Nowcarspeed = Carspeed;
             }
