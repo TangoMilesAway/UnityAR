@@ -7,6 +7,10 @@ using UnityEngine.EventSystems;
 
 public class ScenesAsyncControl : MonoBehaviour,IPointerClickHandler 
 {
+    public GameObject ARCamara;
+    public GameObject Pos;
+    private Vector3 Cam;
+
     [Tooltip("下个场景的名字")]
     public string nextSceneName;
     public void OnPointerClick(PointerEventData eventData) {
@@ -31,5 +35,8 @@ public class ScenesAsyncControl : MonoBehaviour,IPointerClickHandler
         #else
             Application.Quit();
         #endif
+    }
+    public void CameraMove(){
+
     }
 }
