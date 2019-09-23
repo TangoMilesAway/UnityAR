@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CarbornControler : MonoBehaviour
 {
-    public GameObject car;
+    public GameObject[] car;
     public bool isborn;
     public float cooldown;
     public float timer;
@@ -12,7 +12,9 @@ public class CarbornControler : MonoBehaviour
     public GameObject endpoint;
     public int carnum;
     public bool isstart;
-    Vector3 length;
+
+    public Material[] roadmaterial;
+    public int roadmaterialmod;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,23 +22,31 @@ public class CarbornControler : MonoBehaviour
         isstart = false;
         carnum = 0;
         isborn = false;
-        length = this.GetComponent<Renderer>().bounds.size;
-        
+        roadmaterialmod=0;
+        this.GetComponent<Renderer>().material = roadmaterial[roadmaterialmod];
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (roadmaterialmod != GameObject.Find("GameControl").GetComponent<Gamecontroler>().roadmaterialtype)
+        {
+            roadmaterialmod = GameObject.Find("GameControl").GetComponent<Gamecontroler>().roadmaterialtype;
+            this.GetComponent<Renderer>().material = roadmaterial[roadmaterialmod];
+        }
+
         isstart = GameObject.Find("GameControl").GetComponent<Gamecontroler>().startcontrol;
         if (isstart)
         {
             if (isborn && carnum <= 4)
             {
-                GameObject newcar = Instantiate(car);
+                int i = Random.Range(0,4);
+                GameObject newcar = Instantiate(car[i]);
                 newcar.transform.parent = this.transform;
                 newcar.transform.position = bornpoint.transform.position;
                 newcar.GetComponent<Carmovecontroler>().endpoint = endpoint;
                 newcar.GetComponent<Carmovecontroler>().Carspeed = GameObject.Find("GameControl").GetComponent<Gamecontroler>().carspeed;
+                newcar.GetComponent<Carmovecontroler>().speedplus = GameObject.Find("GameControl").GetComponent<Gamecontroler>().speedplus;
                 isborn = false;
                 carnum++;
                 if (carnum > 2)
@@ -53,8 +63,6 @@ public class CarbornControler : MonoBehaviour
             {
                 timer=Random.Range(2.8f, 3f);
             }
-
-
 
             if (!isborn)
             {

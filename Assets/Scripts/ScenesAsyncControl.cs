@@ -9,12 +9,16 @@ public class ScenesAsyncControl : MonoBehaviour,IPointerClickHandler
 {
     public GameObject ARCamara;
     public GameObject Pos;
-    private Vector3 Cam;
+    
 
     [Tooltip("下个场景的名字")]
     public string nextSceneName;
     public void OnPointerClick(PointerEventData eventData) {
+        ArMove();
         SceneManager.LoadScene(nextSceneName);
+    }
+    public void ArMove(){
+
     }
 
     void Start()
@@ -37,6 +41,7 @@ public class ScenesAsyncControl : MonoBehaviour,IPointerClickHandler
         #endif
     }
     public void CameraMove(){
+        Pos.transform.position = Vector3.MoveTowards(transform.position,ARCamara.transform.position,Time.deltaTime*2);   
 
     }
 }

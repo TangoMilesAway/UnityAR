@@ -14,9 +14,11 @@ public class Carmovecontroler : MonoBehaviour
     public float stoptime;
     private Transform[] children;
     private float safedistance;
+    public float speedplus;
     void Start()
     {
-        Nowcarspeed = Carspeed;
+
+        Nowcarspeed = Carspeed+speedplus;
         timer = 0;
         stoptime = 0.5f;
         children = this.GetComponentsInChildren<Transform>();
@@ -42,28 +44,25 @@ public class Carmovecontroler : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit, 1000))
             {
-                Debug.Log(hit.transform.tag);
                 if (hit.transform.tag == "Car")
                 {
-                    Debug.Log(Vector3.Distance(hit.transform.position, this.transform.position));
-                    Debug.Log(safedistance * 1.5f);
                     if (Vector3.Distance(hit.transform.position, this.transform.position) <= safedistance*1.5f)
                     {
                         Nowcarspeed = 0f;
                     }
                     else
                     {
-                        Nowcarspeed = Carspeed;
+                        Nowcarspeed = Carspeed + speedplus;
                     }
                 }
                 else {
-                    Nowcarspeed = Carspeed;
+                    Nowcarspeed = Carspeed + speedplus;
                 }
             }
 
             if (!Physics.Raycast(ray, out hit, 1000))
             {
-                Nowcarspeed = Carspeed;
+                Nowcarspeed = Carspeed + speedplus;
             }
         }
 
@@ -73,7 +72,7 @@ public class Carmovecontroler : MonoBehaviour
             if (timer >= stoptime)
             {
                 isstop = false;
-                Nowcarspeed = Carspeed;
+                Nowcarspeed = Carspeed + speedplus;
                 timer = 0;
             }
         }

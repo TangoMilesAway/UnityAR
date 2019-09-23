@@ -7,7 +7,7 @@ public class ButtonControl : MonoBehaviour
     public GameObject startPanel;//初始页面
 
     public GameObject SetPanel;//设置页面
-
+ 
 
     // Start is called before the first frame update
     void Start()

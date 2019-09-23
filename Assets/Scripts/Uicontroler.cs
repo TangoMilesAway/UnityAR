@@ -8,8 +8,15 @@ public class Uicontroler : MonoBehaviour
     public Text carcount;
     public int carpassnum;
     public Text time;
+    public GameObject vcontrol;
+    public GameObject scontrol;
+    public GameObject pcontrol;
+    public bool v;
+    public bool s;
+    public bool p;
     void Start()
     {
+        v = s = p = false;
         carpassnum = 0;
     }
 
@@ -22,6 +29,10 @@ public class Uicontroler : MonoBehaviour
         }
         carcount.text = "车辆通过数为：" + carpassnum;
         time.text = "时间:" + (int)gamecontrol.GetComponent<Gamecontroler>().timer + "s";
+
+        vcontrol.SetActive(v);
+        scontrol.SetActive(s);
+        pcontrol.SetActive(p);
     }
 
 
@@ -33,4 +44,24 @@ public class Uicontroler : MonoBehaviour
     public void carpassnumclean() {
         carpassnum = 0;
     }
+
+
+    public void Buttonv() {
+        v = !v;
+        p = false;
+        s = false;
+    }
+    public void Buttons()
+    {
+        s = !s;
+        v = false;
+        p = false;
+    }
+    public void Buttonp()
+    {
+        p = !p;
+        v = false;
+        s = false;
+    }
+
 }

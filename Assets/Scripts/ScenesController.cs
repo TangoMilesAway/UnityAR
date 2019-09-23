@@ -7,14 +7,24 @@ using UnityEngine.EventSystems;
 
 public class ScenesController : MonoBehaviour,IPointerClickHandler 
 {
-      [Tooltip("下个场景的名字")]
+    
+    [Tooltip("下个场景的名字")]
     public string nextSceneName;
+    public GameObject button;
+    public GameObject button2;
+    public void buttonchange(){
+        button.SetActive(false);
+        button2.SetActive(true);
+    }
     public void OnPointerClick(PointerEventData eventData) {
+        buttonchange();
         SceneManager.LoadScene(nextSceneName);
     }
 
-    void Start()
-    {
+    void Awake()
+    {       
+        button.SetActive(true);
+        button2.SetActive(false);
         
     }
 
