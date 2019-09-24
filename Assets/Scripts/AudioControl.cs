@@ -17,10 +17,8 @@ public class AudioControl : MonoBehaviour
     void Start()
     {
         mainMenuAudio=GameObject.Find("BGM").GetComponent<AudioSource>();
-        // explainAudio=GameObject.Find("Explain").GetComponent<AudioSource>();
-
+        
         audioVolume.value=mainMenuAudio.volume;
-        // effectVolume.value=explainAudio.volume;
     }
 
     // Update is called once per frame
@@ -38,6 +36,8 @@ public class AudioControl : MonoBehaviour
         if(mainMenuAudio.isPlaying==true){mainMenuAudio.Pause();}
         else{mainMenuAudio.Play();}
     }
+
+  
         
     // public void OnSliderChange2(){
     //     PlayerPrefs.SetFloat("AudioVolume",effectVolume.value);

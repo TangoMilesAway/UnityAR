@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 public class Uicontroler : MonoBehaviour
-{
+{   
+    // public GameObject UIlabel;
     public GameObject gamecontrol;
     public Text carcount;
     public int carpassnum;
@@ -16,6 +17,7 @@ public class Uicontroler : MonoBehaviour
     public bool p;
     void Start()
     {
+        // UIlabel.SetActive(true);
         v = s = p = false;
         carpassnum = 0;
     }

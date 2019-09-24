@@ -208,7 +208,7 @@ Transform:
   m_GameObject: {fileID: 4485959246952795282}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.2904825, y: -0.83896, z: -1.5374}
-  m_LocalScale: {x: 7.32361, y: 126.22778, z: 153.74544}
+  m_LocalScale: {x: 0.004910178, y: 0.08463051, z: 0.10307998}
   m_Children:
   - {fileID: 4485959247164073153}
   - {fileID: 4485959246067355774}
@@ -288,7 +288,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b64c551d50a6324458aae3343c3612a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  car: {fileID: 3111600468275722935, guid: 3d9c39468cfa45d4a80e4c48d36c609e, type: 3}
+  car: []
   isborn: 0
   cooldown: 3
   timer: 0
@@ -296,6 +296,8 @@ MonoBehaviour:
   endpoint: {fileID: 4485959247164073152}
   carnum: 0
   isstart: 0
+  roadmaterial: []
+  roadmaterialmod: 0
 --- !u!1 &4485959247164073152
 GameObject:
   m_ObjectHideFlags: 0

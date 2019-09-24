@@ -79,6 +79,7 @@ public class Carmovecontroler : MonoBehaviour
 
 
         this.transform.LookAt(endpoint.transform);
+        this.transform.localRotation = Quaternion.Euler(new Vector3(0, 180f, 0));
         this.transform.position = Vector3.Lerp(this.transform.position, endpoint.transform.position, Nowcarspeed);
     }
 

@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Gamecontroler : MonoBehaviour
-{
+{   
+    public GameObject UiLabel;
     public GameObject[] roadtypes;
     public GameObject startpoint;
     public int oldroadnum;
@@ -19,6 +20,7 @@ public class Gamecontroler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        UiLabel.SetActive(true);
         startcontrol = false;
         for (int i = 1; i <= oldroadnum; i++)
         {
@@ -41,8 +43,10 @@ public class Gamecontroler : MonoBehaviour
     {
         if (startcontrol) {
             timer += Time.deltaTime;
+            UiLabel.SetActive(false);
             if (timer >= 10f) {
                 startcontrol = false;
+                UiLabel.SetActive(true);
             }
         }
     }
@@ -101,11 +105,11 @@ public class Gamecontroler : MonoBehaviour
                 }
 
                 GameObject newroad = Instantiate(roadtypes[roadmod]);
-                newroad.transform.position = startpoint.transform.position + new Vector3(roadtypes[roadmod].GetComponent<Renderer>().bounds.size.x, 0, 0) * (i - 1);
+                Debug.Log(roadtypes[roadmod].GetComponent<Renderer>().bounds.size.x);
                 newroad.transform.tag = i.ToString();
                 newroad.transform.parent = roadgathers.transform;
                 newroad.transform.localRotation = Quaternion.Euler(new Vector3(0, 180, 0));
-                newroad.transform.localPosition = new Vector3(newroad.transform.localPosition.x, 0,-712f);
+                newroad.transform.localPosition = new Vector3(150*(i-1), 0,-712f);
             }
             oldroadnum = newroadnum;
         }
@@ -121,11 +125,10 @@ public class Gamecontroler : MonoBehaviour
                 }
             }
             GameObject newroad = Instantiate(roadtypes[2]);
-            newroad.transform.position = startpoint.transform.position + new Vector3(roadtypes[2].GetComponent<Renderer>().bounds.size.x, 0, 0) * (newroadnum - 1);
             newroad.transform.tag = newroadnum.ToString();
             newroad.transform.parent = roadgathers.transform;
             newroad.transform.localRotation = Quaternion.Euler(new Vector3(0, 180, 0));
-            newroad.transform.localPosition = new Vector3(newroad.transform.localPosition.x, 0, -712f);
+            newroad.transform.localPosition = new Vector3(150 * (newroadnum - 1), 0, -712f);
             oldroadnum = newroadnum;
 
         }
@@ -134,7 +137,7 @@ public class Gamecontroler : MonoBehaviour
 
     public void Setangle(float value)
     {
-        roadgathers.transform.rotation = Quaternion.Euler(new Vector3(value * 12f, 0, 0));
+        roadgathers.transform.localRotation = Quaternion.Euler(new Vector3(value * 12f, 0, 0));
         speedplus = value * 0.01f;
     }
 

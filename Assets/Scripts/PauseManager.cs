@@ -7,13 +7,15 @@ using UnityEditor;
 #endif
 
 public class PauseManager : MonoBehaviour {
-	
+
 
 	Canvas canvas;
-	
+	// public GameObject infomation;
 	void Start()
 	{
 		canvas = GetComponent<Canvas>();
+		// canvas.enabled = !canvas.enabled;
+		canvas.enabled=false;
 	}
 	
 	void Update()
@@ -26,6 +28,10 @@ public class PauseManager : MonoBehaviour {
 		// Pause();
 		
 	}
+
+	// public void InfoMenu(){
+		
+	// }
 	// public void Pause()
 	// {
 	// 	Time.timeScale = Time.timeScale == 0 ? 1 : 0;
