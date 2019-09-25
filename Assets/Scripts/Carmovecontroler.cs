@@ -46,7 +46,7 @@ public class Carmovecontroler : MonoBehaviour
             {
                 if (hit.transform.tag == "Car")
                 {
-                    if (Vector3.Distance(hit.transform.position, this.transform.position) <= safedistance*1.5f)
+                    if (Vector3.Distance(hit.transform.position, this.transform.position) <= safedistance*2f)
                     {
                         Nowcarspeed = 0f;
                     }

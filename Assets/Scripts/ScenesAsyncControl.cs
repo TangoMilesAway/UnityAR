@@ -38,6 +38,7 @@ public class ScenesAsyncControl : MonoBehaviour
 
     void Start()
     {
+         Debug.Log(Globe.nextSceneName);
         loadingSlider.value = 0.0f;   //初始化Slider
  
         if (SceneManager.GetActiveScene().name == "Loading")
@@ -50,7 +51,7 @@ public class ScenesAsyncControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-   targetValue = operation.progress;
+       targetValue = operation.progress;
  
         if (operation.progress >= 0.9f)
         {
@@ -90,7 +91,7 @@ public class ScenesAsyncControl : MonoBehaviour
     {
         operation = SceneManager.LoadSceneAsync(Globe.nextSceneName);
         //阻止当加载完成自动切换
-        operation.allowSceneActivation = false;
+        operation.allowSceneActivation = true;
         yield return operation;
     }
 	

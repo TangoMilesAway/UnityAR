@@ -40,7 +40,7 @@ public class CarbornControler : MonoBehaviour
         {
             if (isborn && carnum <= 4)
             {
-                int i = Random.Range(0,4);
+                int i = Random.Range(0,8);
                 GameObject newcar = Instantiate(car[i]);
                 newcar.transform.parent = this.transform;
                 newcar.transform.position = bornpoint.transform.position;

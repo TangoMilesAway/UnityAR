@@ -9,15 +9,18 @@ EditorBuildSettings:
     path: Assets/Scenes/Start.unity
     guid: ea5ebb2685c831a4190f38607d56509a
   - enabled: 1
+    path: Assets/Scenes/Loading.unity
+    guid: 86498c6e12b72a545884794b6793a34f
+  - enabled: 1
     path: Assets/Scenes/ArScene.unity
     guid: 5f08cd8b0819c834bbcf2e5d96a50b39
+  - enabled: 1
+    path: Assets/Scenes/Pullthelens.unity
+    guid: 526d0316799343844994d12f1fe3e9d8
   - enabled: 1
     path: Assets/Scenes/Main.unity
     guid: 794fb1a5529e6e14e8ca3864940c2922
   - enabled: 1
     path: Assets/Scenes/Final.unity
     guid: 697422db43eb92c4a97c0b7989b48e04
-  - enabled: 1
-    path: Assets/Scenes/Loading.unity
-    guid: 86498c6e12b72a545884794b6793a34f
   m_configObjects: {}

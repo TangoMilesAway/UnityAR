@@ -9,9 +9,9 @@ public class LoadSceneMain : MonoBehaviour
     public void LoadNewScene()
     {
         //保存需要加载的目标场景
-        Globe.nextSceneName = "Main";
+        Globe2.nextSceneName = "Main";
 
-        SceneManager.LoadScene("Loading");		
+        SceneManager.LoadScene("Pullthelens");		
     }
     // public void OnPointerClick(PointerEventData eventData) {
     //     buttonchange();

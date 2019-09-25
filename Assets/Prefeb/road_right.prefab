@@ -99,6 +99,10 @@ MonoBehaviour:
   - {fileID: 964827597147247274, guid: 35afe793cd04d5d4cbfd4232eb20bde9, type: 3}
   - {fileID: 4226730556188494925, guid: a0a24fd7a977a2448b85301740390d44, type: 3}
   - {fileID: 742375836766016167, guid: 31d57950f2455454ea6d27cfe370c898, type: 3}
+  - {fileID: 4132703912547805895, guid: 99405ebb45749954d805dad9a0b6f400, type: 3}
+  - {fileID: 8863726969368483734, guid: d55de6c4ca9ab4549b22585e622c96f9, type: 3}
+  - {fileID: 8080417087396489531, guid: aac5a4ebbe1f4b84a966120182fa2b58, type: 3}
+  - {fileID: 3111600468275722935, guid: 3d9c39468cfa45d4a80e4c48d36c609e, type: 3}
   isborn: 0
   cooldown: 3
   timer: 0
