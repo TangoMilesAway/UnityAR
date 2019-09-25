@@ -1,4 +1,4 @@
-﻿Shader "Custom/3DPrinter" {
+﻿Shader "shader/3DPrinter/3DPrinter" {
 	Properties {
 		_Color ("Color", Color) = (1,1,1,1)
 		_MainTex ("Albedo (RGB)", 2D) = "white" {}
